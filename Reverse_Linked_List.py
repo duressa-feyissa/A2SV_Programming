@@ -10,15 +10,19 @@ class Solution:
         hold = []
         Node = head
         while Node:
-            hold.append(Node)
+            hold.append(Node.val)
             Node = Node.next
         hold.reverse()
+        head = ListNode()
+        Node = head
         i = 0
         while i < len(hold):
             if i == len(hold) - 1:
-                hold[i].next = None 
+                Node.val = hold[i]
             else:
-                hold[i].next = hold[i + 1]
+                Node.val = hold[i]
+                Node.next = ListNode()
             i+=1
-        head = hold[0]
+            Node = Node.next
         return head
+
