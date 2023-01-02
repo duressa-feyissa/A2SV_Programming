@@ -14,18 +14,16 @@ class Solution:
                     hash_col[c_index] = 0 + hash_col.get(c_index, 0)
                     
             hash_row[r_index] = count_row_one
-        answer = []
+
         row_length = len(grid)
         col_length = len(grid[0])
         
         for i in range(row_length):
-            hold = []
             for j in range(col_length):
                 x = hash_row[i] + hash_col[j]
                 y = (row_length - hash_row[i]) + (col_length - hash_col[j])         
-                hold.append(x - y)
-            answer.append(hold)
-        return answer
+                grid[i][j] = x - y
+        return grid
             
                     
                 
