@@ -20,7 +20,7 @@ class Solution:
                 break
         i = king[0] - 1
         j = king[1] - 1 
-        while i >= 0 and j >= 0:
+        while i >= 0 and j >= 0:#NothWest
             if [i,j] in queens:
                 answer.append([i,j])
                 break
@@ -28,7 +28,7 @@ class Solution:
             j-=1
         i = king[0] - 1
         j = king[1] + 1 
-        while i >= 0 and j < 8:
+        while i >= 0 and j < 8:#NortEast
             if [i,j] in queens:
                 answer.append([i,j])
                 break
@@ -36,7 +36,7 @@ class Solution:
             j+=1
         i = king[0] + 1
         j = king[1] + 1 
-        while i < 8 and j < 8:
+        while i < 8 and j < 8:#SouthEast
             if [i,j] in queens:
                 answer.append([i,j])
                 break
@@ -44,7 +44,7 @@ class Solution:
             j+=1
         i = king[0] + 1
         j = king[1] - 1 
-        while i < 8 and j >= 0:
+        while i < 8 and j >= 0:#SouthWest
             if [i,j] in queens:
                 answer.append([i,j])
                 break
