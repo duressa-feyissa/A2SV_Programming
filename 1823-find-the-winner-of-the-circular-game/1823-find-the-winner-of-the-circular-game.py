@@ -14,7 +14,9 @@ class Solution:
                      
 """
 #method 2: without removing losers from array
-#Ineffective method         
+#Ineffective method
+        if n == 1:
+            return n
         lose = 0
         gap = 0
         while lose != n - 1:
