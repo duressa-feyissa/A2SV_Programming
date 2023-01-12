@@ -13,7 +13,8 @@ class Solution:
         return array[0]
                      
 """
-method 2: without removing losers from array
+#method 2: without removing losers from array
+#Ineffective method         
         lose = 0
         gap = 0
         while lose != n - 1:
