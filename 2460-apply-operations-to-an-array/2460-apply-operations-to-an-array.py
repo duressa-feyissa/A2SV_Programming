@@ -5,20 +5,14 @@ class Solution:
             if nums[index] == nums[index + 1]:
                 nums[index] *= 2
                 nums[index + 1] = 0
-        zeros = nums.count(0)
-        track = 0
-        left = 0
-        while left < len(nums):
-            if nums[left] != 0:
-                nums[track] = nums[left]
-                track += 1
-            left += 1
-            
-        left = len(nums) - zeros
-        while left < len(nums):
-            nums[left] = 0
-            left += 1
+        write = 0
+        for read in range(len(nums)):
+            if nums[read] != 0:
+                nums[read], nums[write] = nums[write], nums[read]
+                write += 1
         return nums
+        
+    
                 
         
                 
