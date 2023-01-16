@@ -4,8 +4,8 @@ class Solution:
         colums = len(mat[0])
         if rows * colums != r * c:
             return mat                
+        
         left = 0
-        top = 0
         temp = []
         result = []
         for row in range(rows):
@@ -15,7 +15,6 @@ class Solution:
                     left += 1
                 else:
                     left = 0
-                    top += 1
                     result.append(temp)
                     temp = []
         return result
