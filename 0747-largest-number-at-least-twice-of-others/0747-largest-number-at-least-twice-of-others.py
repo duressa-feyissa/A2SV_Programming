@@ -1,8 +1,11 @@
 class Solution:
     def dominantIndex(self, nums: List[int]) -> int:
         largest = max(nums)
-        for item in nums:
-            if item != largest and largest < item * 2:
+        answer = -1
+        for index in range(len(nums)):
+            if nums[index] != largest and largest < nums[index] * 2:
                 return -1
-        return nums.index(largest)
+            if nums[index] == largest:
+                answer = index
+        return answer
                 
