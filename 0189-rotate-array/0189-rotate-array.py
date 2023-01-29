@@ -3,6 +3,7 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
+        #method 1: with space O(1)
         n = len(nums) - 1
         k = k % len(nums)
         #reverse from index 0 to n - k using two pointer
@@ -20,3 +21,21 @@ class Solution:
             nums[left], nums[right] = nums[right], nums[left]
             left += 1
             right -= 1
+"""
+method = #2
+using space O(n)
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        k = k % n
+        array = nums.copy()
+        left = 0
+        right = -k
+        while left < n:
+            nums[left] = array[right]
+            left+=1
+            right+=1
+"""
