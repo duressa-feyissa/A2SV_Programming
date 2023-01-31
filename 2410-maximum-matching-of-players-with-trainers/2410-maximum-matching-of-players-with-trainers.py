@@ -10,7 +10,6 @@ class Solution:
         result = 0
         while left1 < m and left2 < n:
             if players[left1] <= trainers[left2]:
-                print(players[left1], trainers[left2])
                 result += 1
                 left1 += 1
                 left2 += 1
