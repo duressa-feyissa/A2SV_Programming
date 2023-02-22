@@ -14,7 +14,7 @@ class Solution:
                 window[s[i]] = 1
             window[s[i - n]] -= 1
             if window[s[i - n]] == 0:
-                del window[s[i - n]]
+                window.pop(s[i - n])
             if window == check:
                 ans.append(i - n + 1)
         return ans
