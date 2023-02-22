@@ -8,9 +8,8 @@ class Solution:
         while right < n:
             if s[right] in check:
                 ans = max(ans, len(check))
-                while s[right] in check:
-                    check.remove(s[left])
-                    left += 1
+                check.remove(s[left])
+                left += 1
             else:
                 check.add(s[right])
                 if right == n - 1:
