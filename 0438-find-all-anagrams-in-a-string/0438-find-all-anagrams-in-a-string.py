@@ -3,9 +3,9 @@ class Solution:
         check = Counter(p)
         n = len(p)
         window = Counter(s[:n])
-        t = 1 if window == check else 0
+        initial = 1 if window == check else 0
         ans = []
-        if t:
+        if initial:
             ans.append(0)
         for i in range(n, len(s)):
             if s[i] in window:
