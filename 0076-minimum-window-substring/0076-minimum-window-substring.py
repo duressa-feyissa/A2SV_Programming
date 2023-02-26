@@ -35,30 +35,7 @@ class Solution:
                     else:
                         left += 1
         
-        return "" if ans == m + 1 else s[index[0]: index[1]+1]
-            
-            
-        
-                
-            
-            
-            
-            
-        
-        
-        
-        
-                
-            
-                
-                
-                
-                
-            
-            
-        
-        
-        
-        
-        
-        
+         
+        if ans == m + 1:
+            return ""
+        return s[index[0]: index[1]+1]
