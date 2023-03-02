@@ -5,8 +5,7 @@ class Solution:
     def solve(self, s):
         digit = ""
         char = ""
-        hold = ""
-        
+    
         if s == "":
             return ["", ""]
         
