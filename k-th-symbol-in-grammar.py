@@ -1,15 +1,11 @@
 class Solution:
     def kthGrammar(self, n: int, k: int) -> int:
-        
-        if n == 1:
-            return 0
-        if n == 2 and k == 1:
+        if n == 1 or (n == 2 and k == 1):
             return 0
         if n == 2 and k == 2:
             return 1
         
         isInverted = False
-        
         if k > 2 ** (n - 1) // 2:
             isInverted = True
             k = k - (2 ** (n - 1) // 2)
@@ -18,10 +14,8 @@ class Solution:
         if isInverted == True:
             if previous_th_k == 1:
                 return 0
-            else:
-                return 1
-        else:
-            return previous_th_k
+            return 1
+        return previous_th_k
         
     """
     def solve(self, n):
