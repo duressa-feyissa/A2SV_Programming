@@ -19,7 +19,7 @@ class Solution:
             else:
                 left = middle + 1
         
-        return valid
+        return left
                 
                 
             
