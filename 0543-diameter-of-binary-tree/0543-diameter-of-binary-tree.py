@@ -8,7 +8,6 @@ class Solution:
     
     def diameterOfBinaryTree(self, root: Optional[TreeNode]) -> int:
         ans = self.helper(root)
-        print(ans)
         return ans[1]
     
     def helper(self, root):
@@ -22,6 +21,7 @@ class Solution:
         res[1] = max(left[0] + right[0], max(left[1], right[1]))
         res[0] = max(left[0], right[0]) + 1
         return res
+    
         
         
         
