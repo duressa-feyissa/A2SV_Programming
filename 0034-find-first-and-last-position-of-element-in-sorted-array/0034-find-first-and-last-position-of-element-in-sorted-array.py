@@ -19,20 +19,15 @@ class Solution:
 
         left = 0
         right = length - 1
-        res = -1
         while left <= right:
             middle = (left + right) // 2
-            
-            if nums[middle] == target:
-                res = middle
-                left = middle + 1
-            elif nums[middle] < target:
+            if nums[middle] <= target:
                 left = middle + 1
             else:
                 right = middle - 1
         
-        if nums and nums[res] == target:
-            index[1] = res
+        if nums and nums[right] == target:
+            index[1] = right
             
         return index
 
