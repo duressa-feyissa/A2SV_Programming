@@ -18,16 +18,16 @@ class Solution:
             index[0] = left
 
         left = 0
-        right = length - 1
-        while left <= right:
+        right = length
+        while left < right:
             middle = (left + right) // 2
             if nums[middle] <= target:
                 left = middle + 1
             else:
-                right = middle - 1
+                right = middle
         
-        if nums and nums[right] == target:
-            index[1] = right
+        if nums and nums[right - 1] == target:
+            index[1] = right - 1
             
         return index
 
