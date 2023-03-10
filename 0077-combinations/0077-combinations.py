@@ -11,7 +11,9 @@ class Solution:
                 return
             
             for j in range(i, n):
-                backTrack(j + 1, combination + [j + 1])
+                combination.append(j + 1)
+                backTrack(j + 1, combination)
+                combination.pop()
 
         backTrack(0, [])    
         return answer
