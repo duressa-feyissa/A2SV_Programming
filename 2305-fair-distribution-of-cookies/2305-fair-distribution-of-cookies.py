@@ -7,6 +7,9 @@ class Solution:
         def backTrack(i, n):
             nonlocal ans
 
+            if ans <= max(bags):
+                return
+
             if n == i:
                 ans = min(ans, max(bags))
                 return
