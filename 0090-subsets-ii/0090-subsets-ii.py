@@ -22,5 +22,5 @@ class Solution:
         
         backTrack(0,[])
         
-        return list(map(list, answer))
+        return answer
         
