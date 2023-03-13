@@ -12,7 +12,9 @@ class Solution:
             for j in range(i, n):
                 temp = int(s[i:j + 1])
                 if not stack or stack[-1] - temp == 1:
-                    ans = ans or backTrack(j + 1, stack + [temp])
+                    stack.append(temp)
+                    ans = ans or backTrack(j + 1, stack)
+                    stack.pop()
             return ans
         return backTrack(0, [])
         
