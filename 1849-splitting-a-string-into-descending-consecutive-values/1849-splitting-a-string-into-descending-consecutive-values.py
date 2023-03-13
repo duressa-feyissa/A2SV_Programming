@@ -1,9 +1,7 @@
 class Solution:
     def splitString(self, s: str) -> bool:
         n = len(s)
-        stat = False
         def backTrack(i, stack): 
-            nonlocal stat
             if i == n:        
                 if len(stack) >= 2:
                     return True
@@ -15,6 +13,7 @@ class Solution:
                     stack.append(temp)
                     ans = ans or backTrack(j + 1, stack)
                     stack.pop()
+                
             return ans
         return backTrack(0, [])
         
