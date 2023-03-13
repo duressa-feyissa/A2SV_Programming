@@ -4,7 +4,7 @@ class Solution:
         answer = set()
         nums.sort()
     
-        def backtrack(i, permutation):
+        def backtrack(permutation):
             
             if len(permutation) == n:
                 check = tuple(permutation)
@@ -15,21 +15,13 @@ class Solution:
             for j in range(n):
                 if nums[j] not in permutation:
                     permutation.append(nums[j])
-                    backtrack(j, permutation)
+                    backtrack(permutation)
                     permutation.pop()
                     
-        backtrack(0, [])
+        backtrack([])
         
         return answer
-"""     
-            [1]         []
-            [1, 2]      [1]
-            [1, 2, 3]   [1, 2]
-            
-            [1]         []
-            [1, 3]      [1]
-           [1, 3, 2]   [1, 3]
-"""
+
             
     
     
