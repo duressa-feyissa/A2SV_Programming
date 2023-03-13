@@ -6,16 +6,16 @@ class Solution:
             nonlocal stat
             if i == n:        
                 if len(stack) >= 2:
-                    stat = True
-                return
-            
+                    return True
+                return False
+            ans = False
             for j in range(i, n):
                 temp = int(s[i:j + 1])
                 if not stack or stack[-1] - temp == 1:
-                    backTrack(j + 1, stack + [temp])
+                    ans = ans or backTrack(j + 1, stack + [temp])
+            return ans
+        return backTrack(0, [])
         
-        backTrack(0, [])
-        return stat
                 
                     
                     
