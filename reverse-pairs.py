@@ -19,7 +19,7 @@ class Solution:
                     answer += position
 
             return self.merge(leftSide, rightSide)
-        x = mergeSort(nums)
+        mergeSort(nums)
         return answer
     
     def merge(self, left, right):
