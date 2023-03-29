@@ -1,25 +1,22 @@
 class Solution:
     def reversePairs(self, nums: List[int]) -> int:
         answer = 0
-        def mergeSort(nums):
+        def mergeSort(nums, left, right):
             nonlocal answer
-            left, right = 0, len(nums)
-            if left + 1 == right:
+            if left == right:
                 return [nums[left]]
             middle = (left + right) // 2
-            leftSide = mergeSort(nums[left: middle])
-            rightSide = mergeSort(nums[middle: right])
+            leftSide = mergeSort(nums, left, middle)
+            rightSide = mergeSort(nums, middle + 1, right)
             length = len(rightSide)
-            
             for i in range(len(leftSide) - 1, -1, -1):
                 position = bisect_left(rightSide, leftSide[i] / 2)
                 if position == 0:
                     break
                 else:
                     answer += position
-
             return self.merge(leftSide, rightSide)
-        mergeSort(nums)
+        mergeSort(nums, 0, len(nums) - 1)
         return answer
     
     def merge(self, left, right):
