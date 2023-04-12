@@ -7,14 +7,12 @@ class Node:
 """
 
 class Solution:
-    def maxDepth(self, root: 'Node', level=1, visited=set()) -> int:
+    def maxDepth(self, root: 'Node', level=1) -> int:
         if not root:
             return 0
         if not root.children:
             return level
-        visited.add(root)
         Max = 0
         for node in root.children:
-            if node not in visited:
-                Max = max(Max, self.maxDepth(node, level + 1, visited))
+            Max = max(Max, self.maxDepth(node, level + 1))
         return Max
