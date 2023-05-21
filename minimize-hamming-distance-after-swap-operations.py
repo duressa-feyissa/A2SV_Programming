@@ -30,22 +30,8 @@ class Solution:
             groups[parent].append(i)
         
         count = 0
-        visited = set()
-        
-        def dfs(node):
-            nonlocal count
-            if node in visited:
-                return
-            visited.add(node)
-            New = Counter(map(lambda x: source[x], groups[node]))
-            check = Counter(map(lambda x: target[x], groups[node]))
+        for values in groups.values():        
+            New = Counter(map(lambda x: source[x], values))
+            check = Counter(map(lambda x: target[x], values))
             count += sum((New - check).values())
-            
-            for child in groups[node]:
-                dfs(child)
-        
-        for i in range(N):
-            if i not in visited:
-                dfs(i)
-        
         return count
