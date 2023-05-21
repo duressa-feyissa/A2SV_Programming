@@ -1,6 +1,3 @@
-from collections import Counter, defaultdict
-from typing import List
-
 class Solution:
     def minimumHammingDistance(self, source: List[int], target: List[int], allowedSwaps: List[List[int]]) -> int:
         N = len(source)
