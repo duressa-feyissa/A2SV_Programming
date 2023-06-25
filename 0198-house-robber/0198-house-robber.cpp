@@ -1,11 +1,13 @@
 class Solution {
 public:
     int rob(vector<int>& nums) {
-        vector<int> memory(nums.size() + 2, 0);
+        int first = 0, second = 0;
         for (int i = nums.size() - 1; i > -1; i--) {
-            memory[i] = max(nums[i] + memory[i + 2], memory[i + 1]);   
+            int temp = first;
+            first = max(nums[i] + second, first);
+            second = temp;
         }
-        return memory[0];
+        return max(first, second);
     }
 };
 
