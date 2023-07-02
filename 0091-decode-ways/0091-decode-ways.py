@@ -1,21 +1,13 @@
 class Solution:
     def numDecodings(self, s: str) -> int:
-        memory = {}
         N = len(s)
-        def dp(i):
-            if i == N:
-                return 1
-            if i > N:
-                return 0
-            if i not in memory:
-                count = 0
-                if s[i] != "0":
-                    count += dp(i + 1)
-                else:
-                    return 0
-                if int(s[i: i+2]) < 27:
-                    count += dp(i + 2)
-                memory[i] = count 
-            return memory[i] 
-        return dp(0)
-        
+        dp = [0] * (N + 1)
+        dp[N] = 1
+
+        for i in range(N - 1, -1, -1):
+            if s[i] != "0":
+                dp[i] += dp[i + 1]
+                if i + 1 < N and int(s[i:i + 2]) <= 26:
+                    dp[i] += dp[i + 2]
+
+        return dp[0]
