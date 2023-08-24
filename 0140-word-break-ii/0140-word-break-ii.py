@@ -2,24 +2,18 @@ class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         N = len(s)
         answer = []
-        memory = {}
-        def dp(index):
+        def backTrack(index, path):
             if index >= N:
-                return []
-            result = []
+                answer.append(" ".join(path[:]))
+                return
             for word in wordDict:
                 if word == s[index: len(word) + index]:
-                    temp = dp(index + len(word))
-                    if temp:
-                        for array in temp:
-                            array.append(word)
-                            result.append(array)
-                    else:
-                        result.append([word])
-            return result
-        for array in dp(0):
-            if N == sum(list(map(lambda x: len(x), array))):
-                answer.append(" ".join(array[::-1]))
+                    path.append(word)
+                    temp = backTrack(index + len(word), path)
+                    path.pop()
+                    
+        backTrack(0, [])
+        
         return answer
                     
         
