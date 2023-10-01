@@ -1,24 +1,16 @@
+# approache 1
 class Solution:
     def bestTeamScore(self, scores: List[int], ages: List[int]) -> int:
-        N = len(scores)
-        array = []
-        for i in range(N):
-            array.append((ages[i], scores[i]))
-        array.sort()
-        dp = []
-        for i in range(N):
-            dp.append(array[i][1])
-        for i in range(1, N):
+        new_list = list(zip(ages, scores))
+        new_list = sorted(new_list)
+        @lru_cache(None)
+        def helper(i):
+            if i==0:
+                return new_list[i][1]
+            # max_value = new_list[i][1]
+            max_value = 0
             for j in range(i):
-                if array[j][1] <= array[i][1]:
-                    dp[i] = max(dp[i], dp[j] + array[i][1])
-        
-        return max(dp)
-            
-        
-
-
-
-            
-
-        
+                if new_list[i][1]>=new_list[j][1]:
+                    max_value = max(max_value, helper(j))
+            return max_value+new_list[i][1]
+        return max(helper(i) for i in range(len(scores)))
