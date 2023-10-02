@@ -9,6 +9,7 @@ class Trie:
     def __init__(self):
         self.root = TrieNode()
         self.N = 0
+        self.memory = {}
         
     def insert(self, word):
         current = self.root
@@ -20,6 +21,10 @@ class Trie:
             current = current.children[index]
         
     def helper(self, word, wordDict, pointer):
+        state = (word, pointer.index)
+        if state in self.memory:
+            return self.memory[state]
+        
         result = []
         n = len(word)
         for i, w in enumerate(word):
@@ -29,13 +34,17 @@ class Trie:
             if pointer.index == self.N - 1 and i == n -1:
                 return [[word, True]]
             pointer = pointer.children[index]
+            
+            
         if pointer.index > self.N:
             return [[None, False]]
+        
         for wrd in wordDict:
             sResult = self.helper(wrd, wordDict, pointer)
             for val in sResult:
                 if val[1]:
                     result.append([word + " " + val[0], val[1]])
+        self.memory[state] = result
         return result
 
 class Solution:
