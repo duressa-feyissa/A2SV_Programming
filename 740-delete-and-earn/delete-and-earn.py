@@ -1,17 +1,16 @@
+
 class Solution:
     def deleteAndEarn(self, nums: List[int]) -> int:
         counter = Counter(nums)
         keys = sorted(counter.keys())
         N = len(keys)
-        memo = {}
-        def dp(index):
-            if index > N - 1:
-                return 0
-            if index in memo:
-                return memo[index]
-            if index < N - 1 and keys[index] + 1 == keys[index + 1]:
-                memo[index] = max(dp(index + 1), counter[keys[index]] * keys[index] + dp(index + 2))
+        
+        dp = [0] * (N + 2) 
+        
+        for i in range(N - 1, -1, -1):
+            if i < N - 1 and keys[i] + 1 == keys[i + 1]:
+                dp[i] = max(counter[keys[i]] * keys[i] + dp[i + 2], dp[i + 1])
             else:
-                memo[index] = counter[keys[index]] * keys[index] + dp(index + 1)
-            return memo[index]
-        return dp(0)
+                dp[i] = counter[keys[i]] * keys[i] + dp[i + 1]
+        
+        return dp[0]
