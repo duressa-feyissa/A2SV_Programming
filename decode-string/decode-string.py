@@ -1,95 +1,21 @@
 class Solution:
     def decodeString(self, s: str) -> str:
-        return self.solve(s)[0]
+        stack = []
+        current_string = ""
+        current_num = 0
+
+        for char in s:
+            if char.isdigit():
+                current_num = current_num * 10 + int(char)
+            elif char == "[":
+                stack.append((current_string, current_num))
+                current_string = ""
+                current_num = 0
+            elif char == "]":
+                last_string, repeat_count = stack.pop()
+                current_string = last_string + current_string * repeat_count
+            else:
+                current_string += char
+
+        return current_string
     
-    def solve(self, s):
-        digit = ""
-        char = ""
-    
-        if s == "":
-            return ["", ""]
-        
-        if s[0] == "]":
-            return ["", s[1:]]
-
-        while s and s[0].isdigit():
-            digit += s[0]
-            s = s[1:]
-
-        substrings = self.solve(s[1:])
-        
-        if s and s[0] != "[":
-            char = s[0] + substrings[0]
-        else:
-            char = substrings[0]
-        if digit:
-            temp = self.solve(substrings[1])
-            return [(int(digit) * char) + temp[0], temp[1]] 
-
-        return [char, substrings[1]] 
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
