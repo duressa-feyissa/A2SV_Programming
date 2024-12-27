@@ -1,15 +1,29 @@
-class Solution(object):
-    def maxDistToClosest(self, seats):
-        N = len(seats)
-        left, right = [N] * N, [N] * N
+class Solution:
+    def maxDistToClosest(self, seats: List[int]) -> int:
+        n = len(seats)
+        max_distance = 0
 
-        for i in range(N):
-            if seats[i] == 1: left[i] = 0
-            elif i > 0: left[i] = left[i-1] + 1
+        if seats[0] == 0:
+            i = 0
+            while seats[i] == 0:
+                i += 1
+            max_distance = i  
 
-        for i in range(N-1, -1, -1):
-            if seats[i] == 1: right[i] = 0
-            elif i < N-1: right[i] = right[i+1] + 1
+        prev = -1
+        for i in range(n):
+            if seats[i] == 1:
+                if prev == -1:
+                    prev = i
+                else:
+                    distance = (i - prev) // 2
+                    max_distance = max(max_distance, distance)
+                    prev = i
 
-        return max(min(left[i], right[i])
-                   for i, seat in enumerate(seats) if not seat)
+        if seats[-1] == 0:
+            i = n - 1
+            while seats[i] == 0:
+                i -= 1
+            max_distance = max(max_distance, n - 1 - i)
+
+        return max_distance
+        
