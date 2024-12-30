@@ -1,6 +1,6 @@
 class Solution:
     def removeStones(self, stones):
-        uf = self.UnionFind(20002)
+        uf = self.UnionFind()
 
         for x, y in stones:
             uf.union((x, 0), (y, 1))
@@ -8,7 +8,7 @@ class Solution:
         return len(stones) - uf.component_count
 
     class UnionFind:
-        def __init__(self, n):
+        def __init__(self):
             self.parent = {}
             self.component_count = 0
 
